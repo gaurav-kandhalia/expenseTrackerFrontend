@@ -2,7 +2,8 @@ import axios from "axios";
 
 // Base Axios instance
 const API = axios.create({
-  baseURL: "http://localhost:5911/api/v1", // change to your backend URL
+  
+  baseURL:"https://expensetrackbackend-41h5.onrender.com/api/v1",
 });
 
 
@@ -17,7 +18,17 @@ export const refreshAccessToken = (refreshToken) =>
   API.post("/user/refreshAccessToken", { refreshToken });
 
 // Employee APIs
-export const addExpense = (data) => API.post("/employee/addExpense", data);
+export const addExpenseApi = (data) =>{
+  console.log(("-----------------data-----------"),data)
+   const user = JSON.parse(localStorage.getItem("user"));
+  const accessToken = user?.accessToken;
+  return API.post("/expense/addExpense", data, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },    
+  });
+}
+  
 export const getMyExpenses = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const accessToken = user?.accessToken;
@@ -30,6 +41,16 @@ export const getMyExpenses = () => {
 };
 
 export const getExpenseStats = () => API.get("/employee/expense-stats");
+export const getCategories = ()=> {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const accessToken = user?.accessToken;
+
+  return API.get("/expense/getCategories", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  }); 
+};
 
 // Admin APIs
 export const getAllExpenses = () => API.get("/admin/expenses");

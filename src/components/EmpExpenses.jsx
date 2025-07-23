@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { getMyExpenses } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
-function EmpExpenses() {
+function EmpExpenses({setShowAddExpense}) {
 
     const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ function EmpExpenses() {
     //     navigate('/employee/edit-expense');
     // }
     const addExpense = ()=>{
-        navigate('/employee/addExpense');
+        setShowAddExpense(true);
     }
     return (
         <div>

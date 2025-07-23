@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   const [myExpenses,setMyExpenses] = useState([]);
   const [accessToken,setAccessToken] = useState();
   const [refreshToken,setRefreshToken] = useState();
+  const [categories,setCategories] = useState([]);
 
   const token = user?.token;
   const role = user?.role;
@@ -100,7 +101,7 @@ const login = (userData) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, role, logout,myExpenses,setMyExpenses,accessToken,setUser,login }}>
+    <AuthContext.Provider value={{ user, token, role, logout,myExpenses,setMyExpenses,accessToken,setUser,login,categories,setCategories,refreshToken }}>
       {children}
     </AuthContext.Provider>
   );
