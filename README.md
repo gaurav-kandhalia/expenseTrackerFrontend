@@ -72,3 +72,5 @@ Backend should be hosted at the corresponding URL defined in your API setup.
 Made with ❤️ by Gaurav Kandhalia
 
 github  https://github.com/gaurav-kandhalia/expenseTrackerFrontend.git
+
+vercel https://expense-tracker-frontend-rho-mocha.vercel.app/
